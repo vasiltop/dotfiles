@@ -17,6 +17,11 @@
 .config/i3/*
 !/.config/i3/config
 
+# suckless
+!/projects
+/projects/*
+!/projects/dmenu
+
 # home configs
 !/.zshrc
 !/.alacritty.toml
