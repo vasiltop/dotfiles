@@ -2,45 +2,42 @@ set $mod Mod4
 
 font pango:monospace 8
 
+# default gaps
 gaps inner 10
 gaps outer 10
 
+# inner gaps
 bindsym $mod+Shift+s gaps inner all minus 10
 bindsym $mod+s gaps inner all plus 10
 
+# outer gaps
 bindsym $mod+Shift+z gaps outer all minus 10
 bindsym $mod+z gaps outer all plus 10
 
-
+# reset Gaps
 bindsym $mod+Shift+d gaps inner current set 0; gaps outer current set 0
 
-
+# screenshots
 bindsym $mod+Shift+p exec maim -s -u | xclip -selection clipboard -t image/png -i
 
+# startup
 exec --no-startup-id picom
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec_always --no-startup-id ~/.config/i3/polybar.sh &
 exec --no-startup-id feh --bg-center ~/documents/pictures/wallpaper.png
+exec_always --no-startup-id ~/.config/i3/polybar.sh &
 exec_always --no-startup-id autotiling
 
-# Remove title border
+# borders
 for_window [class="^.*"] border pixel 2
 
-# Use pactl to adjust volume in PulseAudio.
+# use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
@@ -78,8 +75,8 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# define names for default workspaces for which we configure key bindings later on.
+# we use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -122,13 +119,13 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
+# resize window
 bindsym $mod+Shift+y resize shrink width 10 px or 10 ppt
 bindsym $mod+Shift+u resize grow height 10 px or 10 ppt
 bindsym $mod+Shift+i resize shrink height 10 px or 10 ppt
 bindsym $mod+SHift+o resize grow width 10 px or 10 ppt
 
-# Change Border Color
+# border colour
 
 set $focused #6896a3
 set $unfocused #525252
