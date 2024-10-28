@@ -115,5 +115,5 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-alias 60h xrandr --output eDP --primary --mode 1920x1080 --rate 63
-alias 144h xrandr --output eDP --primary --mode 1920x1080 --rate 144
+alias 60h="xrandr --output eDP --primary --mode 1920x1080 --rate 63"
+alias 144h="xrandr --output eDP --primary --mode 1920x1080 --rate 144"
