@@ -7,6 +7,11 @@
 !/LICENSE
 !/.gitmodules
 
+# wallpapers
+!/documents
+/documents/*
+!/documents/pictures
+
 # configs
 !/.config
 /.config/*
