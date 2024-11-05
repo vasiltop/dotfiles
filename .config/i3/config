@@ -29,9 +29,6 @@ exec --no-startup-id feh --scale-down --bg-center ~/documents/pictures/wallpaper
 exec_always --no-startup-id ~/.config/i3/polybar.sh &
 exec_always --no-startup-id autotiling
 
-exec xset s off
-exec xset -dpms
-
 # borders
 for_window [class="^.*"] border pixel 2
 
