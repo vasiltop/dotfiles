@@ -3,8 +3,8 @@ set $mod Mod4
 font pango:monospace 8
 
 # default gaps
-gaps inner 10
-gaps outer 10
+gaps inner 0
+gaps outer 0
 
 # inner gaps
 bindsym $mod+Shift+s gaps inner all minus 10
@@ -25,7 +25,7 @@ exec --no-startup-id picom
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec --no-startup-id feh --bg-center ~/documents/pictures/wallpaper.png
+exec --no-startup-id feh --scale-down --bg-center ~/documents/pictures/wallpaper.jpg
 exec_always --no-startup-id ~/.config/i3/polybar.sh &
 exec_always --no-startup-id autotiling
 
