@@ -129,6 +129,11 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.tabstop = 2
+vim.opt.softtabstop = 0
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = false
+vim.opt.smartindent = true
+vim.opt.preserveindent = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'

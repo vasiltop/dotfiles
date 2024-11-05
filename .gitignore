@@ -10,7 +10,7 @@
 # wallpapers
 !/documents
 /documents/*
-!/documents/pictures
+!/documents/wallpapers
 
 # configs
 !/.config
