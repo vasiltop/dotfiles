@@ -6,6 +6,8 @@ font pango:monospace 8
 gaps inner 0
 gaps outer 0
 
+floating_modifier $mod
+
 # inner gaps
 bindsym $mod+Shift+s gaps inner all minus 10
 bindsym $mod+s gaps inner all plus 10
@@ -25,12 +27,16 @@ exec --no-startup-id picom
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec --no-startup-id feh --scale-down --bg-center ~/documents/wallpapers/wallpaper.jpg
+exec --no-startup-id feh --scale-down --bg-center ~/documents/wallpapers/cool.jpeg
 exec_always --no-startup-id ~/.config/i3/polybar.sh &
 exec_always --no-startup-id autotiling
 
 # borders
 for_window [class="^.*"] border pixel 2
+
+# monitors
+exec xrandr --output DP-2 --mode 2560x1440 --rate 240.00 --primary
+exec xrandr --output HDMI-0 --off
 
 # use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -41,6 +47,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return+Shift exec --no-startup-id alacritty --role floating_term
+for_window [window_role=floating_term] floating enable
 
 # start ranger
 bindsym $mod+r exec --no-startup-id alacritty -e "ranger"
@@ -71,6 +79,9 @@ bindsym $mod+f fullscreen toggle
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+bindsym button1 floating_modifier drag
+bindsym button3 floating_modifier resize
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
