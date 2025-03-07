@@ -1,0 +1,1 @@
+PROMPT="%{$fg[yellow]%}%~%f $ "
