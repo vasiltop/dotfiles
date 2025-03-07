@@ -60,7 +60,7 @@ bindsym $mod+e exec --no-startup-id firefox
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run -b
 
 # change focus
 bindsym $mod+h focus left
@@ -131,15 +131,15 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window
-bindsym $mod+Shift+y resize shrink width 20 px or 20 ppt
-bindsym $mod+Shift+u resize grow height 20 px or 20 ppt
-bindsym $mod+Shift+i resize shrink height 20 px or 20 ppt
-bindsym $mod+SHift+o resize grow width 20 px or 20 ppt
+bindsym $mod+Shift+o resize shrink width 20 px or 20 ppt
+bindsym $mod+Shift+i resize grow height 20 px or 20 ppt
+bindsym $mod+Shift+u resize shrink height 20 px or 20 ppt
+bindsym $mod+SHift+y resize grow width 20 px or 20 ppt
 
 # border colour
 
-set $focused #6896a3
-set $unfocused #525252
+set $focused #c96f6f
+set $unfocused #663937
 
 client.focused_inactive $unfocused $unfocused $unfocused $unfocused $unfocused 
 client.unfocused $unfocused $unfocused $unfocused $unfocused $unfocused 
