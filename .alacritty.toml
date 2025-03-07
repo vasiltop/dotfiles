@@ -6,7 +6,7 @@ normal = { family = "JetBrainsMonoNerdFont", style = "Regular" }
 bold = { family = "JetBrainsMonoNerdFont", style = "Bold" }
 italic = { family = "JetBrainsMonoNerdFont", style = "Italic" }
 bold_italic = { family = "JetBrainsMonoNerdFont", style = "Bold Italic" }
-size = 14
+size = 12 
 
 [keyboard]
 bindings = [
