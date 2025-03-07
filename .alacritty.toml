@@ -1,5 +1,8 @@
 [window]
-padding = { x = 4, y = 4}
+padding = { x = 20, y = 20}
+
+[cursor.style]
+shape = "Beam"
 
 [font]
 normal = { family = "JetBrainsMonoNerdFont", style = "Regular" }
@@ -15,3 +18,4 @@ bindings = [
 
 [colors.primary]
 background = "#100f0f"
+foreground = "#ebdbb2"
