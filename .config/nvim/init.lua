@@ -51,6 +51,9 @@ vim.opt.scrolloff = 8
 -- command line
 vim.api.nvim_set_keymap("n", ":", "q:i", { noremap = true, silent = true })
 
+-- explorer
+vim.api.nvim_set_keymap("n", "<Space>e", ":Ex<CR>", { noremap = true, silent = true })
+
 -- setup lazy.nvim
 require("lazy").setup({
 	{
