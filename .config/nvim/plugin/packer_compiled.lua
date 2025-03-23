@@ -74,45 +74,15 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["cmp-nvim-lsp"] = {
+  moonfly = {
     loaded = true,
-    path = "/home/vasil/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
-    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
-  },
-  flexoki = {
-    loaded = true,
-    path = "/home/vasil/.local/share/nvim/site/pack/packer/start/flexoki",
-    url = "https://github.com/kepano/flexoki-neovim"
-  },
-  ["nvim-cmp"] = {
-    loaded = true,
-    path = "/home/vasil/.local/share/nvim/site/pack/packer/start/nvim-cmp",
-    url = "https://github.com/hrsh7th/nvim-cmp"
-  },
-  ["nvim-lspconfig"] = {
-    loaded = true,
-    path = "/home/vasil/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
-    url = "https://github.com/neovim/nvim-lspconfig"
-  },
-  ["nvim-treesitter"] = {
-    loaded = true,
-    path = "/home/vasil/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter"
+    path = "/home/vasil/.local/share/nvim/site/pack/packer/start/moonfly",
+    url = "https://github.com/vim-moonfly-colors"
   },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/vasil/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
-  },
-  ["plenary.nvim"] = {
-    loaded = true,
-    path = "/home/vasil/.local/share/nvim/site/pack/packer/start/plenary.nvim",
-    url = "https://github.com/nvim-lua/plenary.nvim"
-  },
-  ["telescope.nvim"] = {
-    loaded = true,
-    path = "/home/vasil/.local/share/nvim/site/pack/packer/start/telescope.nvim",
-    url = "https://github.com/nvim-telescope/telescope.nvim"
   }
 }
 

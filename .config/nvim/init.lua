@@ -1,9 +1,26 @@
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out, "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
+end
+vim.opt.rtp:prepend(lazypath)
+
 -- leader key
 vim.g.mapleader = " "
 
 -- clipboard
 vim.schedule(function()
-	vim.opt.clipboard = 'unnamedplus'
+	vim.opt.clipboard = "unnamedplus"
 end)
 
 -- tab size
@@ -32,88 +49,42 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
 -- command line
-vim.api.nvim_set_keymap('n', ':', 'q:i', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", ":", "q:i", { noremap = true, silent = true })
 
--- packer
-vim.cmd [[packadd packer.nvim]]
-
--- lsp
-
--- rust-analyzer
-require'lspconfig'.rust_analyzer.setup{
-  settings = {
-    ['rust-analyzer'] = {
-      diagnostics = {
-        enable = false;
-      }
-    }
-  }
-}
-
--- remove layout shift
-vim.opt.signcolumn = 'yes'
-
-local lspconfig_defaults = require('lspconfig').util.default_config
-lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-  'force',
-  lspconfig_defaults.capabilities,
-  require('cmp_nvim_lsp').default_capabilities()
-)
-
--- This is where you enable features that only work
--- if there is a language server active in the file
-vim.api.nvim_create_autocmd('LspAttach', {
-  desc = 'LSP actions',
-  callback = function(event)
-    local opts = {buffer = event.buf}
-
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-    vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-    vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-    vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-  end,
-})
-
--- tree sitter config
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "lua", "rust" },
-  sync_install = false,
-  auto_install = true,
-
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-}
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-
-  -- color scheme
-  use({ 'kepano/flexoki-neovim', as = 'flexoki' })
-	vim.cmd('colorscheme flexoki-dark')
-
-	-- fuzzy finder
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.8',
-		requires = { {'nvim-lua/plenary.nvim'} }
+-- setup lazy.nvim
+require("lazy").setup({
+	{
+		"bluz71/vim-moonfly-colors",
+		name = "moonfly",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.g.moonflyTransparent = true
+			vim.cmd("colorscheme moonfly")
+		end,
+	},
+	{ 
+		'nvim-treesitter/nvim-treesitter',
+		opts = {
+			auto_install = true,
+		},
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup(opts)
+		end,
+	},
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = true
+	},
+	{
+		'nvim-telescope/telescope.nvim',
+		tag = '0.1.8',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		config = function(_, _)
+			local builtin = require('telescope.builtin')
+			vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+			vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+		end
 	}
-
-	local builtin = require('telescope.builtin')
-	vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-
-	-- tree sitter
-	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-
-	-- lsp
-	use({'neovim/nvim-lspconfig'})
-	use({'hrsh7th/nvim-cmp'})
-	use({'hrsh7th/cmp-nvim-lsp'})
-
-end)
+})
