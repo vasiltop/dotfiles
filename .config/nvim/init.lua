@@ -63,6 +63,8 @@ vim.api.nvim_set_keymap('n', '<C-j>', ':wincmd j<CR>', { noremap = true, silent 
 vim.api.nvim_set_keymap('n', '<C-h>', ':wincmd h<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-l>', ':wincmd l<CR>', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<C-f>', ':tab split<CR>', { noremap = true, silent = true })
+
 vim.api.nvim_set_keymap('n', '<Space>h', ':split<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Space>v', ':vsplit<CR>', { noremap = true, silent = true })
 
@@ -94,6 +96,7 @@ vim.api.nvim_set_keymap('n', '<Space>c', [[q:OOutput ]], { noremap = true, silen
 
 -- setup lazy.nvim
 require("lazy").setup({
+	--[[
 	{
 		"bluz71/vim-moonfly-colors",
 		name = "moonfly",
@@ -102,6 +105,17 @@ require("lazy").setup({
 		config = function()
 			vim.g.moonflyTransparent = true
 			vim.cmd("colorscheme moonfly")
+		end,
+	},
+	--]]
+	{
+		"tiagovla/tokyodark.nvim",
+		opts = {
+			transparent_background = true
+		},
+		config = function(_, opts)
+			require("tokyodark").setup(opts) -- calling setup is optional
+			vim.cmd [[colorscheme tokyodark]]
 		end,
 	},
 	{ 

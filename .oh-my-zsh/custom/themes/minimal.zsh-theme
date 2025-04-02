@@ -1,1 +1,1 @@
-PROMPT="%{$fg[yellow]%}%~%f $ "
+PROMPT='%n@%m:%~%# '

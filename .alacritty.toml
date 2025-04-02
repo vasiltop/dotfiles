@@ -1,15 +1,12 @@
 [window]
-padding = { x = 20, y = 20}
-
-[cursor.style]
-shape = "Beam"
+padding = { x = 10, y = 10}
 
 [font]
 normal = { family = "JetBrainsMonoNerdFont", style = "Regular" }
 bold = { family = "JetBrainsMonoNerdFont", style = "Bold" }
 italic = { family = "JetBrainsMonoNerdFont", style = "Italic" }
 bold_italic = { family = "JetBrainsMonoNerdFont", style = "Bold Italic" }
-size = 12 
+size = 25
 
 [keyboard]
 bindings = [
@@ -18,4 +15,5 @@ bindings = [
 
 [colors.primary]
 background = "#100f0f"
-foreground = "#ebdbb2"
+# foreground = "#ebdbb2"
+foreground = "#ffffff"

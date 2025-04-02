@@ -5,6 +5,6 @@ plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-alias ls="ls_extended -l"
+alias ls="ls -l --color=auto"
 alias r=ranger
 
