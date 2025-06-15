@@ -5,10 +5,9 @@ plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-alias ll="ls -l --color=auto"
-alias la="ls -a --color=auto"
+alias ls="ls -l --color=none"
+alias la="ls -al --color=none"
 alias r=ranger
-
 
 # pnpm
 export PNPM_HOME="/home/vasil/.local/share/pnpm"

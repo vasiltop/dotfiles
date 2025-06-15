@@ -21,8 +21,13 @@ return {
 					end
 
 					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+					map("K", vim.lsp.buf.hover, "Hover Documentation")
 				end,
 				})
+
+				local capabilities = vim.lsp.protocol.make_client_capabilities()
+				capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+				require('lspconfig').gdscript.setup(capabilities)
 		end,
 		opts = {
 			servers = {

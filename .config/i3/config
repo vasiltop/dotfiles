@@ -25,7 +25,7 @@ exec --no-startup-id picom
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec --no-startup-id feh --bg-scale ~/documents/wallpapers/cool.jpeg
+exec --no-startup-id feh --bg-scale ~/documents/wallpapers/mist.jpg
 exec_always --no-startup-id autotiling
 
 # borders
@@ -130,10 +130,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window
-bindsym $mod+Shift+o resize shrink width 20 px or 20 ppt
-bindsym $mod+Shift+i resize grow height 20 px or 20 ppt
-bindsym $mod+Shift+u resize shrink height 20 px or 20 ppt
-bindsym $mod+SHift+y resize grow width 20 px or 20 ppt
+bindsym $mod+Shift+o resize shrink width 10 px or 10 ppt
+bindsym $mod+Shift+i resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+u resize shrink height 10 px or 10 ppt
+bindsym $mod+SHift+y resize grow width 10 px or 10 ppt
 
 # window colors
 client.focused #9b8d7f #9b8d7f #000000 #9b8d7f #9b8d7f

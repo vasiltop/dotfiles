@@ -30,3 +30,7 @@ vim.api.nvim_set_keymap('n', '<C-f>', ':tab split<CR>', { noremap = true, silent
 
 vim.api.nvim_set_keymap('n', '<Space>h', ':split<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Space>v', ':vsplit<CR>', { noremap = true, silent = true })
+
+vim.diagnostic.config({
+	virtual_text = true,
+})
