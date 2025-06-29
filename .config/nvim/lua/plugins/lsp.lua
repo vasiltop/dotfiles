@@ -28,10 +28,19 @@ return {
 				local capabilities = vim.lsp.protocol.make_client_capabilities()
 				capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 				require('lspconfig').gdscript.setup(capabilities)
+				require('lspconfig').ts_ls.setup({})
+				require('lspconfig').html.setup({})
 		end,
 		opts = {
 			servers = {
 				rust_analyzer = { enabled = false },
+				ts_ls = {},
+				html = {
+					autoClosingTags = true,
+					filetypes = {
+						'html'
+					}
+				},
 			},
 		},
 	}

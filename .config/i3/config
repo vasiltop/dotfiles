@@ -23,7 +23,7 @@ bindsym $mod+Shift+p exec maim -s -u | xclip -selection clipboard -t image/png -
 # startup
 exec --no-startup-id picom
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i ~/documents/wallpapers/mist.png -e
 exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-scale ~/documents/wallpapers/mist.jpg
 exec_always --no-startup-id autotiling

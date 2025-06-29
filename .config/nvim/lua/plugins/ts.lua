@@ -3,7 +3,7 @@ return {
 		'nvim-treesitter/nvim-treesitter',
 		opts = {
 			auto_install = true,
-			ensure_installed = { "rust", "gdscript" },
+			ensure_installed = { "rust", "gdscript", "typescript", "html" },
 			sync_install = false,
 			auto_install = true,
 		},

@@ -5,9 +5,13 @@ plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-alias ls="ls -l --color=none"
-alias la="ls -al --color=none"
+alias ls="ls -l"
+alias la="ls -al"
 alias r=ranger
+
+export PATH=/opt/x86_elf/bin/:$PATH
+export PATH=/opt/godotsteam_4.4.1/:$PATH
+export PATH=/opt/postman/app/:$PATH
 
 # pnpm
 export PNPM_HOME="/home/vasil/.local/share/pnpm"
@@ -17,40 +21,9 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-lazy-nvm()
-{
-  unset -f nvm node npm npx
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-}
 
-nvm()
-{
-  lazy-nvm
-  nvm $@
-}
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-node()
-{
-  lazy-nvm
-  node $@
-}
 
-npm()
-{
-  lazy-nvm
-  npm $@
-}
-
-pnpm()
-{
-	lazy-nvm
-	pnpm $@
-}
-
-npx()
-{
-  lazy-nvm
-  npx $@
-}
