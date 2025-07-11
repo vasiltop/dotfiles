@@ -27,9 +27,25 @@ return {
 
 				local capabilities = vim.lsp.protocol.make_client_capabilities()
 				capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-				require('lspconfig').gdscript.setup(capabilities)
-				require('lspconfig').ts_ls.setup({})
-				require('lspconfig').html.setup({})
+
+				local lspconfig = require('lspconfig')
+				lspconfig.gdscript.setup(capabilities)
+				lspconfig.volar.setup {}
+				lspconfig.ts_ls.setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = "/home/vasil/.local/share/pnpm/global/5/.pnpm/@vue+language-server@3.0.1_typescript@5.8.3/node_modules/@vue/language-server",
+								languages = { "vue" },
+							},
+						},
+					},
+					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+				})
+				lspconfig.html.setup({})
 		end,
 		opts = {
 			servers = {
