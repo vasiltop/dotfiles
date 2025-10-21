@@ -2,10 +2,10 @@ set $mod Mod4
 
 # gaps
 gaps inner 10
-gaps outer 10
+gaps outer 0
 
 bindsym $mod+Shift+d gaps inner current set 0; gaps outer current set 0
-bindsym $mod+Shift+s gaps inner current set 10; gaps outer current set 10
+bindsym $mod+Shift+s gaps inner current set 10; gaps outer current set 0
 
 font pango:monospace 8
 
@@ -15,7 +15,7 @@ floating_modifier $mod
 bindsym $mod+Shift+p exec maim -s -u | xclip -selection clipboard -t image/png -i
 
 # startup
-exec --no-startup-id picom
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec_always --no-startup-id autotiling
 
 # use pactl to adjust volume in PulseAudio.
@@ -105,8 +105,8 @@ bindsym $mod+Shift+u resize shrink height 10 px or 10 ppt
 bindsym $mod+SHift+y resize grow width 10 px or 10 ppt
 
 set $bg #222222
-
 set $bgl #9b8d7f
+set $bgsl #807367
 set $fg #000000
 set $fgl #9b8d7f
 
@@ -114,10 +114,10 @@ set $fgl #9b8d7f
 bindsym $mod+d exec --no-startup-id dmenu_run -nb "$bg" -sf "$fg" -sb "$bgl" -nf "$fgl"
 
 # window colors
-# border, background, text, indicator
+# border, background, text, bottom of the bar?
 client.focused $bgl $bgl $fg $bgl
-client.focused_inactive $bg $bg $fgl $bg
-client.unfocused $bg $bg $fgl $bg
+client.focused_inactive $bgsl $bgsl $fg $bgsl
+client.unfocused $bgsl $bgsl $fg $bgsl
 
 # bg
 exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/wallpaper.jpg
