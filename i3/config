@@ -104,11 +104,14 @@ bindsym $mod+Shift+i resize grow height 10 px or 10 ppt
 bindsym $mod+Shift+u resize shrink height 10 px or 10 ppt
 bindsym $mod+SHift+y resize grow width 10 px or 10 ppt
 
+# dark background, medium background, light background
 set $bg #222222
+set $bgml #807367
 set $bgl #9b8d7f
-set $bgsl #807367
-set $fg #000000
-set $fgl #9b8d7f
+
+# dark foreground, light foreground
+set $fg #222222
+set $fgl #ffffff
 
 # start dmenu
 bindsym $mod+d exec --no-startup-id dmenu_run -nb "$bg" -sf "$fg" -sb "$bgl" -nf "$fgl"
@@ -116,8 +119,8 @@ bindsym $mod+d exec --no-startup-id dmenu_run -nb "$bg" -sf "$fg" -sb "$bgl" -nf
 # window colors
 # border, background, text, bottom of the bar?
 client.focused $bgl $bgl $fg $bgl
-client.focused_inactive $bgsl $bgsl $fg $bgsl
-client.unfocused $bgsl $bgsl $fg $bgsl
+client.focused_inactive $bgml $bgml $fg $bgml
+client.unfocused $bgml $bgml $fg $bgml
 
 # bg
 exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/wallpaper.jpg
