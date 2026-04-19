@@ -1,13 +1,13 @@
 set $mod Mod4
 
 # gaps
-gaps inner 10
+gaps inner 0
 gaps outer 0
 
 bindsym $mod+Shift+d gaps inner current set 0; gaps outer current set 0
 bindsym $mod+Shift+s gaps inner current set 10; gaps outer current set 0
 
-font pango:monospace 8
+font pango:Terminess Nerd Font 10
 
 floating_modifier $mod
 
@@ -15,7 +15,7 @@ floating_modifier $mod
 bindsym $mod+Shift+p exec maim -s -u | xclip -selection clipboard -t image/png -i
 
 # startup
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
+# exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec_always --no-startup-id autotiling
 
 # use pactl to adjust volume in PulseAudio.

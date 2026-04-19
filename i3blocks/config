@@ -2,24 +2,24 @@
 [cpu]
 command=top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
 interval=5
-label=cpu
+label=cpu 
 
 # Battery Block
 [battery]
 command=acpi -b | grep -o '[0-9]*%'
 interval=30
-label=battery
+label=battery 
 
 [disk]
 command=df -h / | awk 'NR==2 {print $3 "/" $2}'
 interval=60
-label=disk
+label=disk 
 
 # Memory Usage Block
 [memory]
 command=free -h | awk '/^Mem/ {print $3 "/" $2}'
 interval=10
-label=mem
+label=mem 
 
 [volume]
 command=pactl get-sink-volume  @DEFAULT_SINK@ | grep -o '[0-9]\+%' | head -n1
