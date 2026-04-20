@@ -1,5 +1,13 @@
 set $mod Mod4
 
+# colorscheme
+set $bg #121212
+set $text #fafbf6
+
+# current window is the lighter color
+set $current_window #5b768d
+set $other_window #46425e
+
 # gaps
 gaps inner 0
 gaps outer 0
@@ -96,19 +104,19 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+# monitor settings
+exec_always --no-startup-id xrandr --output DP-2 --mode 1920x1080 --rate 144.00
+
 # resize window
 bindsym $mod+Shift+o resize shrink width 10 px or 10 ppt
 bindsym $mod+Shift+i resize grow height 10 px or 10 ppt
 bindsym $mod+Shift+u resize shrink height 10 px or 10 ppt
 bindsym $mod+SHift+y resize grow width 10 px or 10 ppt
 
-set $bg #121212
-
-# current window is the lighter color
-set $current_window #5b768d
-set $other_window #46425e
-
-set $text #fafbf6
+# scratchpad
+for_window [class="scratchterm"] floating enable, move scratchpad, resize set 800 500, move position center, border pixel 2
+bindsym $mod+t scratchpad show
+exec --no-startup-id alacritty --class scratchterm
 
 # start dmenu
 bindsym $mod+d exec --no-startup-id dmenu_run -c -l 15 -fn "Iosevka:size=11" -nb "$bg" -nf "$text" -sb "$current_window" -sf "$text"
@@ -123,19 +131,19 @@ client.unfocused $other_window $other_window $text $other_window
 exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/water.jpg
 
 bar {
-  status_command i3blocks
-  position bottom
-  separator_symbol "::"
-  colors {
-    background $bg
-		statusline $text
-    separator $text
+	status_command i3blocks
+		position bottom
+		separator_symbol "::"
+		colors {
+			background $bg
+				statusline $text
+				separator $text
 
-		# border, background, text_color
-		focused_workspace $current_window $current_window $text
-    inactive_workspace $bg $bg $text
-    active_workspace $bg $bg $text
-    urgent_workspace $bg $bg $text
-    binding_mode $bg $bg $text
-  }
+# border, background, text_color
+				focused_workspace $current_window $current_window $text
+				inactive_workspace $bg $bg $text
+				active_workspace $bg $bg $text
+				urgent_workspace $bg $bg $text
+				binding_mode $bg $bg $text
+		}
 }
