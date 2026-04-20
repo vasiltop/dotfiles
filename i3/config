@@ -119,7 +119,7 @@ bindsym $mod+t scratchpad show
 exec --no-startup-id alacritty --class scratchterm
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id dmenu_run -c -l 15 -fn "Iosevka:size=11" -nb "$bg" -nf "$text" -sb "$current_window" -sf "$text"
+bindsym $mod+d exec --no-startup-id dmenu_run -c -l 15 -bw 2 -fn "Iosevka:size=11" -nb "$bg" -nf "$text" -sb "$current_window" -sf "$text"
 
 # window colors
 # border, background, text, bottom of the bar?
