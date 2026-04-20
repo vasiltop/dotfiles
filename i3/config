@@ -7,7 +7,7 @@ gaps outer 0
 bindsym $mod+Shift+d gaps inner current set 0; gaps outer current set 0
 bindsym $mod+Shift+s gaps inner current set 10; gaps outer current set 0
 
-font pango:Terminess Nerd Font 10
+font pango:Iosevka 10
 
 floating_modifier $mod
 
@@ -18,12 +18,10 @@ bindsym $mod+Shift+p exec maim -s -u | xclip -selection clipboard -t image/png -
 # exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec_always --no-startup-id autotiling
 
-# use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# Use amixer to adjust volume in ALSA/Void Linux
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
+bindsym XF86AudioMute        exec --no-startup-id amixer set Master toggle
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
@@ -104,26 +102,25 @@ bindsym $mod+Shift+i resize grow height 10 px or 10 ppt
 bindsym $mod+Shift+u resize shrink height 10 px or 10 ppt
 bindsym $mod+SHift+y resize grow width 10 px or 10 ppt
 
-# dark background, medium background, light background
-set $bg #222222
-set $bgml #807367
-set $bgl #9b8d7f
+set $bg #121212
 
-# dark foreground, light foreground
-set $fg #222222
-set $fgl #ffffff
+# current window is the lighter color
+set $current_window #5b768d
+set $other_window #46425e
+
+set $text #fafbf6
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id dmenu_run -nb "$bg" -sf "$fg" -sb "$bgl" -nf "$fgl"
+bindsym $mod+d exec --no-startup-id dmenu_run -c -l 15 -fn "Iosevka:size=11" -nb "$bg" -nf "$text" -sb "$current_window" -sf "$text"
 
 # window colors
 # border, background, text, bottom of the bar?
-client.focused $bgl $bgl $fg $bgl
-client.focused_inactive $bgml $bgml $fg $bgml
-client.unfocused $bgml $bgml $fg $bgml
+client.focused $current_window $current_window $text $current_window
+client.focused_inactive $other_window $other_window $text $other_window
+client.unfocused $other_window $other_window $text $other_window
 
 # bg
-exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/water.jpg
 
 bar {
   status_command i3blocks
@@ -131,14 +128,14 @@ bar {
   separator_symbol "::"
   colors {
     background $bg
-		statusline $fgl
-    separator $fgl
+		statusline $text
+    separator $text
 
 		# border, background, text_color
-		focused_workspace $bgl $bgl $fg
-    inactive_workspace $bg $bg $fgl
-    active_workspace $bg $bg $fgl
-    urgent_workspace $bg $bg $fgl
-    binding_mode $bg $bg $fgl
+		focused_workspace $current_window $current_window $text
+    inactive_workspace $bg $bg $text
+    active_workspace $bg $bg $text
+    urgent_workspace $bg $bg $text
+    binding_mode $bg $bg $text
   }
 }

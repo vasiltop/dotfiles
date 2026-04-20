@@ -11,5 +11,5 @@ bindings = [
 ]
 
 [colors.primary]
-background = "#222222"
-foreground = "#9b8d7f"
+background = "#121212"
+foreground = "#fafbf6"

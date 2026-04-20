@@ -3,6 +3,7 @@
 command=top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
 interval=5
 label=cpu 
+color=#46425e
 
 # Battery Block
 [battery]
@@ -14,19 +15,23 @@ label=battery
 command=df -h / | awk 'NR==2 {print $3 "/" $2}'
 interval=60
 label=disk 
+color=#5b768d
 
 # Memory Usage Block
 [memory]
 command=free -h | awk '/^Mem/ {print $3 "/" $2}'
 interval=10
 label=mem 
+color=#a15f6f
 
 [volume]
-command=pactl get-sink-volume  @DEFAULT_SINK@ | grep -o '[0-9]\+%' | head -n1
-interval=1 
-label=vol
+command=amixer get Master | grep -o "\[[0-9]*%\]" | tr -d '[]'
+interval=1
+label=vol 
+color=#d17c7c
 
 # Date/Time Block
 [time]
 command=date "+%Y-%m-%d %H:%M:%S "
 interval=1
+color=#f6c6a8
