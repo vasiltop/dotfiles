@@ -113,11 +113,6 @@ bindsym $mod+Shift+i resize grow height 10 px or 10 ppt
 bindsym $mod+Shift+u resize shrink height 10 px or 10 ppt
 bindsym $mod+SHift+y resize grow width 10 px or 10 ppt
 
-# scratchpad
-for_window [class="scratchterm"] floating enable, move scratchpad, resize set 800 500, move position center, border pixel 2
-bindsym $mod+t scratchpad show
-exec --no-startup-id alacritty --class scratchterm
-
 # start dmenu
 bindsym $mod+d exec --no-startup-id dmenu_run -c -l 15 -bw 2 -fn "Iosevka:size=11" -nb "$bg" -nf "$text" -sb "$current_window" -sf "$text"
 
@@ -129,6 +124,12 @@ client.unfocused $other_window $other_window $text $other_window
 
 # bg
 exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/water.jpg
+
+# audio
+exec_always --no-startup-id sleep 2 && pipewire
+
+# arabic
+exec --no-startup-id setxkbmap -layout us,ara -option grp:alt_shift_toggle
 
 bar {
 	status_command i3blocks
